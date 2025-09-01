@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
+import { CartProvider } from "@/context/CartContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +27,15 @@ export default function RootLayout({ children }) {
         <div className="bg-pink-400 text-white flex p-4 flex-wrap items-center justify-between dark:bg-gray-900">
           <Link href="/" className="text-xl font-bold">eCommerce<span>🤑</span></Link>
           <ul className="flex ">
-            <li className="pl-2 pr-2">home</li>
-            <li className="pl-2 pr-2">Cart</li>
+            <li className="pl-2 pr-2">
+              <Link href="/">Home</Link></li>
+            <li className="pl-2 pr-2">
+              <Link href="/cart">Cart</Link></li>
           </ul>
         </div>
+        <CartProvider>
         {children}
+        </CartProvider>
 
 {/* 
         <footer className="bg-pink-400 text-white  dark:bg-gray-900">

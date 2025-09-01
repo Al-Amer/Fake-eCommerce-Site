@@ -13,7 +13,7 @@ export const ProductList = ({productsListFetch, categoriesFetch }) => {
 
   const clickHandelung = ((e)=>{
     setCategories(e.target.innerHTML);
-   console.log(e.target.innerHTML);
+  //  console.log(e.target.innerHTML);
 });
 
   // console.log(categoriesFetchinput);

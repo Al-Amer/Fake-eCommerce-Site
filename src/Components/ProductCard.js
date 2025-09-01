@@ -1,16 +1,19 @@
 "use client";
 
+import { useCart } from '@/context/CartContext';
 import React from 'react'
 
 
 export default function ProductCard({product}) {
-    const title = product.title;
-    const image = product.image;
-    const descriptionAll = product.description;
-    const price = product.price;
-    const description = ((descriptionAll < 150) ? descriptionAll : descriptionAll.substr(0,150) )
+    // const title = product.title;
+    // const image = product.image;
+    // const descriptionAll = product.description;
+    // const price = product.price;
+    const {title, image, description , price} = product
+    // const description = ((descriptionAll < 150) ? descriptionAll : descriptionAll.substr(0,150) )
+    const {addToCart} = useCart();
 
-    // console.log(`product : ${product}`)
+    console.log(product);
   return (
 
     // <div className="grid grid-cols-4 gap-5 items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">  {/* Gernerally Continer  */}
@@ -27,8 +30,9 @@ export default function ProductCard({product}) {
             {/* </div> */}
               {/* <p className="mb-3 font-normal text-gray-700 dark:text-gray-400 h-70">{description}</p> */}
             <p>price : {price}</p>
-            <button className="text-black font-bold bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 text-center me-2 mb-2
- bb-1 mb-1">
+            <button className="text-black font-bold bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l 
+            focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800 font-medium rounded-lg px-5 py-2.5 
+            text-center me-2 mb-2 bb-1 mb-1" onClick={()=>{addToCart(product)}}>
               Add to cart
             </button>
             </div>
@@ -37,7 +41,6 @@ export default function ProductCard({product}) {
   // </div>
   )
 }
-
 
 // <div class="grid grid-cols-4 gap-5">
 //   <div class="card bg-base-100 shadow-xl">
